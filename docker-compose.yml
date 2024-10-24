@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: svc5tyl
+      POSTGRES_PASSWORD: v&pJ6py~7\cy1UZF
+      POSTGRES_DB: imports_exports_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - network_etl
+
+  python_etl:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: python_etl
+    depends_on:
+      - postgres
+    networks:
+      - network_etl
+
+volumes:
+  postgres_data:
+
+networks:
+  network_etl:
+    driver: bridge
