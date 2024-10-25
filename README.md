@@ -20,6 +20,6 @@ Este proyecto implementa un proceso ETL para cargar datos desde un archivo CSV a
 Verifica la instalación de Docker, luego se construye y levanta los contenedores definidos en el archivo docker-compose.yml ejecutando los siguientes comandos:
 
    ```bash
-   git clone https://github.com/wilder3756/prueba_celerix.git
+   docker --version
    docker-compose --version
    docker-compose up --build
